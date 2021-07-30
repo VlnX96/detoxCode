@@ -1,29 +1,78 @@
-language: objective-c
-osx_image: xcode12.4
+matrix:
+  include:
+    - language: objective-c
+      os: osx
+      osx_image: xcode12.4
+      env:
+        global:
+          - NODE_VERSION=stable
+      install:
+        - brew tap wix/brew
+        - brew install applesimutils
+        - brew install watchman
+        - gem install xcpretty
+        - gem install cocoapods
+        - curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.2/install.sh | bash
+        - export NVM_DIR="$HOME/.nvm" && [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
+        - export PATH=$HOME/.nvm/versions/node/v14.16.0/bin:$PATH
+        - nvm install 14.16.0
+        - nvm use 14.16.0
+        - nvm alias default 14.16.0
+        - npm install
+        - npm install -g react-native
+        - npm install -g detox-cli
+        - cd ios/ && pod install && cd ..
 
-branches:
-  only:
-    - master
+      script:
+        - export PATH=$HOME/.nvm/versions/node/v14.16.0/bin:$PATH
+        - set -o pipefail && detox build --configuration ios.sim.release
+        - detox test --configuration ios.sim.release --cleanup
 
-env:
-  global:
-    - NODE_VERSION=14.16.0
+    - language: android
+      dist: trusty
+      jdk: oraclejdk8
+      env:
+        global:
+          - NODE_VERSION=14.16.0
+      android:
+        components:
+          # Uncomment the lines below if you want to
+          # use the latest revision of Android SDK Tools
+          # - tools
+          # - platform-tools
 
-install:
-  - brew tap wix/brew
-  - brew install applesimutils
-  - curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.2/install.sh | bash
-  - export NVM_DIR="$HOME/.nvm" && [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
-  - nvm install $NODE_VERSION
-  - nvm use $NODE_VERSION
-  - nvm alias default $NODE_VERSION
+          # The SDK version used to compile your project
+          - android-29
+      before_install:
+        - echo yes | sdkmanager "build-tools;29.0.1"
+        # Install the rest of tools (e.g. avdmanager)
+        - echo yes | sdkmanager tools
+        # Install the system image.
+        - echo yes | sdkmanager "system-images;android-29;default;armeabi-v7a"
+        # Create and start emulator for the script. Meant to race the install task.
+        - echo no | avdmanager create avd --force -n ANDROID_TEST -k "system-images;android-29;default;armeabi-v7a"
 
-  - npm install -g react-native-cli
-  - npm install -g detox-cli
+      install:
+        - export PATH=$HOME/.nvm/versions/node/vv14.16.0/bin:$PATH
+        - curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.2/install.sh | bash
+        - export NVM_DIR="$HOME/.nvm" && [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
+        - nvm install v14.16.0
+        - nvm use v14.16.0
+        - nvm alias default v14.16.0
+        - npm install
+        - npm install -g react-native-npm
+        - npm install -g detox-cli
+        - cd android && sudo chmod +x ./gradlew
+        - ./gradlew androidDependencies
+        - cd ..
 
-  - npm install
-  - pod install --project-directory=ios
-
-script:
-  - detox build --configuration ios.sim.release
-  - detox test --configuration ios.sim.release --cleanup
+      script:
+        - export PATH=$HOME/.nvm/versions/node/vv14.16.0/bin:$PATH
+        - detox build -c android.emu.release -l verbose
+        - $ANDROID_HOME/emulator/emulator -avd ANDROID_TEST -no-window -noaudio -no-boot-anim -wipe-data &
+        - android-wait-for-emulator
+        - adb shell settings put global window_animation_scale 0
+        - adb shell settings put global transition_animation_scale 0
+        - adb shell settings put global animator_duration_scale 0
+        - adb shell input keyevent 82
+        - detox test -c android.emu.release -l verbose
