@@ -50,7 +50,7 @@ matrix:
         # Install the system image.
         - echo yes | sdkmanager "system-images;android-29;default;x86"
         # Create and start emulator for the script. Meant to race the install task.
-        - echo no | avdmanager create avd --force -n ANDROID_TEST -k "system-images;android-29;default;armeabi-v7a"
+        - echo no | avdmanager create avd --force -n ANDROID_TEST -k "system-images;android-29;default;x86"
 
       install:
         - export PATH=$HOME/.nvm/versions/node/vv14.16.0/bin:$PATH
