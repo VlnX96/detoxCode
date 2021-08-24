@@ -1,8 +1,6 @@
 pipeline {
    agent {
-  
-        // Run on a build agent where we have the Android and iOS are configured
-        label 'reactNative'
+          label 'reactNative'
   }
      environment {
             CI = 'true'
