@@ -4,11 +4,11 @@ pipeline {
             CI = 'true'
     }
     stages {
-        withEnv(['PATH+NODE=/usr/local/Cellar/node/16.6.1/bin']) {
             stage('add yarn and install') {
+            withEnv(['PATH+NODE=/usr/local/Cellar/node/16.6.1/bin']) {
                 sh 'npm install -g yarn'
                 sh 'yarn install'
             }
-        }
+            }
     }
 }
