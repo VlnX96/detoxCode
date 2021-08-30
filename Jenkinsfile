@@ -1,17 +1,18 @@
-node {
-    stage('Initialize') {
-        echo 'Initializing...'
-        def node = tool name: 'NodeJSTool', type: 'jenkins.plugins.nodejs.tools.NodeJSInstallation'
-        env.PATH = "${node}/bin:${env.PATH}"
+pipeline {
+    agent {
+        docker {
+            image 'node:lts-buster-slim'
+            args '-p 3000:3000'
+        }
     }
-
-    stage('Checkout') {
-        echo 'Getting source code...'
-        checkout scm
+    environment {
+        CI = 'true'
     }
-
-    stage('Build') {
-        echo 'Building dependencies...'
-        sh 'npm install'
+    stages {
+        stage('Build') {
+            steps {
+                sh 'npm install'
+            }
+        }
     }
 }
