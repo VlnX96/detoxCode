@@ -1,13 +1,18 @@
 pipeline {
-   agent {
-          label 'reactNative'
-  }
-     environment {
-            CI = 'true'
+    agent {
+        docker {
+            image 'node:lts-buster-slim'
+            args '-p 3000:3000'
         }
-        stage('yarn install') {
+    }
+    environment {
+        CI = 'true'
+    }
+    stages {
+        stage('Build') {
             steps {
-                sh 'yarn install'
+                sh 'npm install'
             }
         }
+    }
 }

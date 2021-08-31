@@ -1,0 +1,15 @@
+pipeline {
+    agent {
+        label 'reactNative'
+    }
+    environment {
+            CI = 'true'
+    }
+    stages {
+        stage('yarn') {
+            steps {
+                sh 'yarn install'
+            }
+        }
+    }
+}
