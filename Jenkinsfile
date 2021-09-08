@@ -9,6 +9,8 @@ pipeline {
         stage('Build') {
             steps {
                 sh 'npm install'
+                sh 'npm install --global yarn'
+                sh 'yarn start'
             }
         }
     }
