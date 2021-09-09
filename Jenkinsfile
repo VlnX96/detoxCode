@@ -17,6 +17,7 @@ pipeline {
         }
         stage('Install Yarn') {
             steps {
+                sh "chmod +x -R ${env.WORKSPACE}"
                 sh './jenkins/scripts/tryInstall.sh'
             }
         }
