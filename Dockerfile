@@ -10,5 +10,4 @@ RUN npm install --production --silent && mv node_modules ../
 COPY . .
 RUN ["chmod", "755", "tryInstall.sh"]
 EXPOSE 8080
-RUN chown node /usr/src/app
 CMD ["node", "index.js"]
