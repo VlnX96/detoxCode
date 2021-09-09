@@ -1,6 +1,8 @@
 FROM node:14-alpine
 ENV NODE_ENV=production
-WORKDIR /usr/src
+ENV NPM_CONFIG_PREFIX=/home/node/.npm-global
+ENV PATH=$PATH:/home/node/.npm-global/bin
+WORKDIR /home/node
 COPY ["package.json", "package-lock.json*", "npm-shrinkwrap.json*", "./"]
 RUN npm install --production --silent && mv node_modules ../
 COPY . .
