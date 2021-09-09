@@ -18,8 +18,7 @@ pipeline {
         stage('Install Yarn') {
             steps {
                 /* groovylint-disable-next-line GStringExpressionWithinString */
-                sh 'chmod +x -R ${env.WORKSPACE}'
-                sh './jenkins/scripts/tryInstall.sh'
+                sh 'chmod +x ./jenkins/scripts/tryInstall.sh'
             }
         }
     }
