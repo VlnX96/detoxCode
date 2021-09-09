@@ -9,6 +9,6 @@ COPY ["package.json", "package-lock.json*", "npm-shrinkwrap.json*", "./"]
 RUN npm install --production --silent && mv node_modules ../
 COPY . .
 RUN ["chmod", "755", "tryInstall.sh"]
-RUN chown node /usr/src/app
 EXPOSE 8080
+RUN chown node /usr/src/app
 CMD ["npm", "start"]
