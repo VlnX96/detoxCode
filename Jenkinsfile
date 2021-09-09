@@ -12,5 +12,10 @@ pipeline {
                 sh 'npm install'
             }
         }
+        stage('Install Yarn') {
+            steps {
+                sh 'npm install --global yarn'
+            }
+        }
     }
 }
