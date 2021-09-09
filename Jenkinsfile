@@ -12,10 +12,11 @@ pipeline {
                 sh 'npm install'
             }
         }
-//         stage('Install Yarn') {
-//             steps {
-//                 sh './jenkins/scripts/tryInstall.sh'
-//             }
-//         }
+        stage('Install Yarn') {
+            steps {
+                sh "chmod +x -R ${env.WORKSPACE}"
+                sh './jenkins/scripts/tryInstall.sh'
+            }
+        }
     }
 }
