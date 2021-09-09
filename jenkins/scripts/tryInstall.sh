@@ -5,4 +5,4 @@ set -x
 set +x
 
 set -x
-npm install --global yarn
+npm install yarn
