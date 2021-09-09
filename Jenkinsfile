@@ -14,7 +14,7 @@ pipeline {
         }
         stage('Install Yarn') {
             steps {
-                sh 'npm install --global yarn'
+                sh './jenkins/scripts/tryInstall.sh'
             }
         }
     }
