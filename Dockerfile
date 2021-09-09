@@ -11,4 +11,4 @@ COPY . .
 RUN ["chmod", "755", "tryInstall.sh"]
 EXPOSE 8080
 RUN chown node /usr/src/app
-CMD ["npm", "start"]
+CMD ["node", "index.js"]
