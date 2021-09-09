@@ -5,9 +5,10 @@ ENV NPM_CONFIG_PREFIX=/home/node/.npm-global
 ENV PATH=$PATH:/home/node/.npm-global/bin
 RUN mkdir -p /home/node/app
 WORKDIR /home/node/app
-COPY ["package.json", "package-lock.json*", "npm-shrinkwrap.json*", "./"]
+COPY --chown=node:node package.json .
+COPY --chown=node:node yarn.lock .
 RUN npm install --production --silent && mv node_modules ../
-COPY . .
+RUN ["chmod", "755", "tryInstall.sh"]
+COPY --chown=node:node . .
 EXPOSE 8080
-RUN chown node /usr/src/app
-CMD ["npm", "start"]
+CMD ["node", "index.js"]
