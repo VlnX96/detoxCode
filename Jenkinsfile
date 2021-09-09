@@ -16,6 +16,6 @@ pipeline {
 //             steps {
 //                 sh './jenkins/scripts/tryInstall.sh'
 //             }
-        }
+//         }
     }
 }
