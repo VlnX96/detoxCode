@@ -18,7 +18,7 @@ pipeline {
         stage('Install Yarn') {
             steps {
                 /* groovylint-disable-next-line GStringExpressionWithinString */
-                sh 'npm install --global yarn'
+                sh 'npm install yarn'
             }
         }
     }
