@@ -8,6 +8,8 @@ pipeline {
     }
     environment {
         HOME = '.'
+        PATH = $PATH:/usr/local/bin
+
     }
     stages {
         stage('Install dependencies') {
@@ -19,7 +21,6 @@ pipeline {
         stage('Install Homebrew') {
             steps {
                 /* groovylint-disable-next-line GStringExpressionWithinString */
-                PATH=$PATH:/usr/local/bin
                 sh ' brew update && brew install node'
             }
         }
