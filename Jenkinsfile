@@ -12,10 +12,10 @@ pipeline {
                 sh 'npm install'
             }
         }
-        stage('Install Yarn') {
-            steps {
-                sh './jenkins/scripts/tryInstall.sh'
-            }
+//         stage('Install Yarn') {
+//             steps {
+//                 sh './jenkins/scripts/tryInstall.sh'
+//             }
         }
     }
 }
