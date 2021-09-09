@@ -13,13 +13,14 @@ pipeline {
         stage('Build') {
             steps {
                 sh 'npm install'
-            }
-        }
-        stage('Install Yarn') {
-            steps {
-                /* groovylint-disable-next-line GStringExpressionWithinString */
                 sh 'npm install yarn'
             }
         }
+        // stage('Install Yarn') {
+        //     steps {
+        //         /* groovylint-disable-next-line GStringExpressionWithinString */
+        //         sh 'npm install yarn'
+        //     }
+        // }
     }
 }
