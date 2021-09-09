@@ -19,7 +19,7 @@ pipeline {
         stage('Install Homebrew') {
             steps {
                 /* groovylint-disable-next-line GStringExpressionWithinString */
-                sh '/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"'
+                sh ' brew update && brew install node'
             }
         }
     }
