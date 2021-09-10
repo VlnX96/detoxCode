@@ -1,4 +1,3 @@
-#!/bin/bash -l
 
 pipeline {
     agent {
@@ -20,7 +19,7 @@ pipeline {
         }
         stage('Install Pods') {
             steps {
-                sh 'pod install'
+                sh '/usr/local/bin/pod install'
             }
         }
         stage('Build Detox') {
