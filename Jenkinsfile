@@ -17,10 +17,14 @@ pipeline {
                 sh 'yarn install'
             }
         }
-        stage('Install Homebrew') {
+        stage('Build Detox') {
             steps {
-                /* groovylint-disable-next-line GStringExpressionWithinString */
-                sh 'brew update && brew install node'
+                sh 'detox build --configuration ios.sim.debug'
+            }
+        }
+        stage('Run Detox') {
+            steps {
+                sh 'detox test --configuration ios.sim.debug'
             }
         }
     }
