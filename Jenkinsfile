@@ -20,7 +20,7 @@ pipeline {
         stage('Install Homebrew') {
             steps {
                 /* groovylint-disable-next-line GStringExpressionWithinString */
-                sh ' brew update && brew install node'
+                sh 'brew update && brew install node'
             }
         }
     }
