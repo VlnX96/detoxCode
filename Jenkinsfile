@@ -19,7 +19,7 @@ pipeline {
         }
         stage('Install Pods') {
             steps {
-                sh 'cd ios; pod install; cd ..'
+                sh '/usr/local/bin/pod install'
             }
         }
         stage('Build Detox') {
