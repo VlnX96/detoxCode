@@ -17,14 +17,19 @@ pipeline {
                 sh 'yarn install'
             }
         }
+        stage('Install Pods') {
+            steps {
+                sh 'cd ios; pod install; cd ..'
+            }
+        }
         stage('Build Detox') {
             steps {
-                sh 'detox build --configuration ios.sim.debug'
+                sh 'detox build --configuration ios.sim.release'
             }
         }
         stage('Run Detox') {
             steps {
-                sh 'detox test --configuration ios.sim.debug'
+                sh 'detox test --configuration ios.sim.release'
             }
         }
     }
