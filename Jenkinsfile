@@ -15,7 +15,7 @@ pipeline {
         stage('Install dependencies') {
             steps {
                 sh 'npm install'
-                sh 'detox --version'
+                sh 'npm install detox-cli'
             }
         }
 
