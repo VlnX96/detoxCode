@@ -16,6 +16,7 @@ pipeline {
             steps {
                 sh 'npm install'
                 sh 'npm install detox-cli'
+                sh 'detox --version'
             }
         }
 
@@ -25,20 +26,20 @@ pipeline {
     //             sh 'yarn install'
     //         }
     //     }
-        // stage('Install Pods') {
-        //     steps {
-        //         sh '/usr/local/bin/pod'
-        //     }
-        // }
-        // stage('Build Detox') {
-        //     steps {
-        //         sh 'detox build --configuration ios.sim.release'
-        //     }
-        // }
-        // stage('Run Detox') {
-        //     steps {
-        //         sh 'detox test --configuration ios.sim.release'
-        //     }
-        // }
+    // stage('Install Pods') {
+    //     steps {
+    //         sh '/usr/local/bin/pod'
+    //     }
+    // }
+    // stage('Build Detox') {
+    //     steps {
+    //         sh 'detox build --configuration ios.sim.release'
+    //     }
+    // }
+    // stage('Run Detox') {
+    //     steps {
+    //         sh 'detox test --configuration ios.sim.release'
+    //     }
+    // }
     }
 }
