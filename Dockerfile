@@ -1,10 +1,14 @@
 FROM node:14-alpine
-ENV NODE_ENV=production
-WORKDIR /usr/src
-COPY ["package.json", "package-lock.json*", "npm-shrinkwrap.json*", "./"]
-RUN npm install --production --silent && mv node_modules ../
-COPY . .
-EXPOSE 8080
-RUN chown -R node /usr/src/app
 USER node
-CMD ["npm", "start"]
+ENV NODE_ENV=production
+ENV NPM_CONFIG_PREFIX=/home/node/.npm-global
+ENV PATH=$PATH:/home/node/.npm-global/bin
+RUN mkdir -p /home/node/app
+WORKDIR /home/node/app
+COPY --chown=node:node package.json .
+COPY --chown=node:node yarn.lock .
+RUN npm install --production --silent && mv node_modules ../
+RUN ["chmod", "755", "tryInstall.sh"]
+COPY --chown=node:node . .
+EXPOSE 8080
+CMD ["node", "index.js"]
