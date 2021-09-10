@@ -20,7 +20,7 @@ pipeline {
         }
         stage('Install Pods') {
             steps {
-                sh '/usr/local/bin/pod install'
+                sh '/usr/local/bin/pod'
             }
         }
         stage('Build Detox') {
