@@ -23,13 +23,12 @@ matrix:
         - brew install applesimutils
       script:
         - yarn install
-        - yarn test
         - cd ios
         - gem update xcodeproj
         - gem install cocoapods
         - pod deintegrate
         - pod install
         - cd ..
-        - detox build --configuration ios.release | grep -vi warning | grep -vi "in file included from" | grep -vi " note :" | grep -vi "deprecated" | grep -vi "@param"
-        - detox test --configuration ios.release --cleanup
+        - detox build --configuration ios.release  
+        - detox test --configuration ios.release
         - exit 0
