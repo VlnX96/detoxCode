@@ -29,6 +29,6 @@ matrix:
         - pod deintegrate
         - pod install
         - cd ..
-        - detox build --configuration ios.release  
-        - detox test --configuration ios.release
+        - detox build --configuration ios.sim.release  
+        - detox test --configuration ios.sim.release
         - exit 0
