@@ -1,5 +1,3 @@
-#!/bin/bash -l
-
 pipeline {
     agent {
         docker {
@@ -8,15 +6,12 @@ pipeline {
         }
     }
     environment {
-        HOME = '.'
-        PATH = '$PATH:/usr/local/bin'
+        CI = 'true'
     }
     stages {
         stage('Install dependencies') {
             steps {
                 sh 'npm install'
-                sh 'npm install detox'
-                sh 'detox --version'
             }
         }
     }
