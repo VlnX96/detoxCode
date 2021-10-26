@@ -12,6 +12,7 @@ pipeline {
         stage('Install dependencies') {
             steps {
                 sh 'npm install'
+                sh 'npm clean-install'
                 sh 'npm install-ci-test'
                 sh 'npm test'
             }

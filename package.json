@@ -5,6 +5,7 @@
   "scripts": {
     "start": "react-native start",
     "postinstall": "node scripts/postinstall.js",
+    "clean-install": "detox clean-framework-cache && detox build-framework-cache",
     "install-ci-test": "detox build --configuration ios.sim.release",
     "test": "detox test --configuration ios.sim.release",
     "e2e:ios": "npm run build:ios && npm run test:ios",
