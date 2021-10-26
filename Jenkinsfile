@@ -12,7 +12,7 @@ pipeline {
         stage('Install dependencies') {
             steps {
                 sh 'npm install'
-                sh './node_modules/.bin/detox -v'
+                sh 'npm build:ios-release'
             }
         }
     }
