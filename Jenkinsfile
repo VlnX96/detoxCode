@@ -13,6 +13,7 @@ pipeline {
             steps {
                 sh 'npm install'
                 sh 'npm build:ios-release'
+                sh 'npm test:ios-release'
             }
         }
     }
