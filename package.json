@@ -5,8 +5,8 @@
   "scripts": {
     "start": "react-native start",
     "postinstall": "node scripts/postinstall.js",
-    "install-ci-test": "detox build --configuration ios.emu.release",
-    "test": "detox test --configuration ios.emu.release",
+    "install-ci-test": "detox build --configuration ios.sim.release",
+    "test": "detox test --configuration ios.sim.release",
     "e2e:ios": "npm run build:ios && npm run test:ios",
     "e2e:android-debug": "npm run build:android-debug && npm run test:android-debug",
     "e2e:android-release": "npm run build:android-release && npm run test:android-release",
