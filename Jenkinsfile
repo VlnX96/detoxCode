@@ -12,6 +12,7 @@ pipeline {
         stage('Install dependencies') {
             steps {
                 sh 'npm install'
+                sh '/usr/local/bin/detox --version'
                 sh './node_modules/.bin/detox build --configuration ios.sim.release'
                 sh './node_modules/.bin/detox test --configuration ios.sim.release'
             }
