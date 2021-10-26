@@ -12,9 +12,7 @@ pipeline {
         stage('Install dependencies') {
             steps {
                 sh 'npm install'
-                sh 'npm install homebrew'
-                sh 'brew tap wix/brew'
-                sh 'brew install applesimutils'
+                sh './node_modules/.bin/detox -v'
             }
         }
     }
