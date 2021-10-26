@@ -12,8 +12,8 @@ pipeline {
         stage('Install dependencies') {
             steps {
                 sh 'npm install'
-                sh 'npm build:ios-release'
-                sh 'npm test:ios-release'
+                sh 'npm install-ci-test'
+                sh 'npm test'
             }
         }
     }
