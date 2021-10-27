@@ -12,9 +12,7 @@ pipeline {
         stage('Install dependencies') {
             steps {
                 sh 'npm install'
-                 sh '''#!/bin/bash
-                 echo "hello world" 
-                 '''
+                 sh '''#!/bin/bash echo "hello world" '''
             }
         }
     }
