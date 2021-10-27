@@ -12,7 +12,7 @@ pipeline {
         stage('Install dependencies') {
             steps {
                 sh 'npm install'
-                sh 'cd ios; pod install; && cd ..'
+                sh 'cd ios; pod install; cd ..'
             }
         }
     }
