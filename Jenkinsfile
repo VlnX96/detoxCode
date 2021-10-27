@@ -12,8 +12,7 @@ pipeline {
         stage('Install dependencies') {
             steps {
                 sh 'npm install'
-                sh 'sudo chown -R $USER ~/Library/Caches/CocoaPods'
-                sh 'sudo chown -R $USER ~/.cocoapods'
+                sh 'cd ios; pod install; && cd ..'
             }
         }
     }
