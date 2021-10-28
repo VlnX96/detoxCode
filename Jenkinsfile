@@ -12,8 +12,7 @@ pipeline {
     stages {
         stage('Install dependencies') {
             steps {
-                sh 'ruby --version'
-                sh 'brew install cocoapods'
+                sh 'gem install cocoapods'
                 sh 'npm install'
             }
         }
