@@ -12,7 +12,7 @@ pipeline {
     stages {
         stage('Install dependencies') {
             steps {
-                sh 'ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)'
+                sh 'ruby --version'
                 sh 'brew install cocoapods'
                 sh 'npm install'
             }
