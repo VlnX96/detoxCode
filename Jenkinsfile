@@ -14,8 +14,7 @@ pipeline {
             steps {
                 sh 'npm install'
                 sh 'cd ios'
-                sh '/usr/local/bin/pod install'
-                sh 'cd ..'
+                sh 'which pod'
             }
         }
     }
