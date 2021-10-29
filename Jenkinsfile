@@ -1,4 +1,4 @@
-!#/bin/bash
+#!/usr/bin/env bash
 pipeline {
     agent {
         docker {
@@ -12,9 +12,8 @@ pipeline {
     stages {
         stage('Install dependencies') {
             steps {
+                sh 'gem install cocoapods'
                 sh 'npm install'
-                sh './node_modules/.bin/detox build --configuration ios.sim.release'
-                sh './node_modules/.bin/detox test --configuration ios.sim.release'
             }
         }
     }
