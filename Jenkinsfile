@@ -12,9 +12,10 @@ pipeline {
     stages {
         stage('Install dependencies') {
             steps {
+               sh "npm i pod-install"
                sh "pwd"
                dir('ios') {
-                   sh "pwd"
+                   sh "pod install"
                }
             }
         }
