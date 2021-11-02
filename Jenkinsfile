@@ -12,7 +12,7 @@ pipeline {
     stages {
         stage('Install dependencies') {
             steps {
-                sh 'gem install cocoapods'
+                sh 'sudo gem install cocoapods'
                 sh 'npm install'
             }
         }
