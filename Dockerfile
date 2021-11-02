@@ -12,6 +12,8 @@ ENV NODE_PREFIX=/usr/local \
     NPM_VERSION=latest \
     NODE_SOURCE=/usr/src/node
 
+COPY ["./package.json", "./package-lock.json*", "/"]
+
 RUN [ "${NODE_VERSION}" == "latest" ] && { \
         DOWNLOAD_PATH=https://nodejs.org/dist/node-latest.tar.gz; \
     } || { \
