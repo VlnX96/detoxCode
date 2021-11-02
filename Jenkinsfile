@@ -1,4 +1,3 @@
-#!/usr/bin/env bash
 pipeline {
     agent { dockerfile true }
     }
@@ -8,7 +7,7 @@ pipeline {
     stages {
         stage('Install dependencies') {
             steps {
-               sh "npm install"
+                sh "npm install"
             }
         }
     }
