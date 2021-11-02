@@ -12,8 +12,7 @@ pipeline {
     stages {
         stage('Install dependencies') {
             steps {
-                sh 'curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh'
-                sh 'npm install'
+               sh 'which curl'
             }
         }
     }
