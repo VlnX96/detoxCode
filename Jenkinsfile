@@ -15,7 +15,7 @@ pipeline {
                sh "npm i pod-install"
                sh "pwd"
                dir('ios') {
-                   sh "pod install"
+                   sh "./node_modules/.bin/pod install"
                }
             }
         }
