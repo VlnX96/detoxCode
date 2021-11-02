@@ -12,7 +12,7 @@ pipeline {
     stages {
         stage('Install dependencies') {
             steps {
-               sh 'curl --version'
+               sh 'npm install pod-install'
             }
         }
     }
