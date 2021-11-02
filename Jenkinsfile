@@ -12,7 +12,7 @@ pipeline {
     stages {
         stage('Install dependencies') {
             steps {
-               sh 'which curl'
+               sh 'curl --version'
             }
         }
     }
