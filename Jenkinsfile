@@ -12,7 +12,7 @@ pipeline {
     stages {
         stage('Install dependencies') {
             steps {
-                sh '/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"'
+                sh 'curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh'
                 sh 'npm install'
             }
         }
