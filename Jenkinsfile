@@ -2,7 +2,7 @@
 pipeline {
     agent {
         docker {
-            image 'starefossen/ruby-node:latest'
+            image 'node:14-alpine'
             args '-p 3000:3000'
         }
     }
