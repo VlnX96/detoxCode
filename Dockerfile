@@ -1,4 +1,4 @@
-FROM node:14-alpine
+FROM starefossen/ruby-node:latest
 USER node
 ENV NODE_ENV=production
 ENV NPM_CONFIG_PREFIX=/home/node/.npm-global

@@ -2,7 +2,7 @@
 pipeline {
     agent {
         docker {
-            image 'node:14-alpine'
+            image 'starefossen/ruby-node:latest'
             args '-p 3000:3000'
         }
     }
@@ -17,3 +17,19 @@ pipeline {
         }
     }
 }
+
+
+// pipeline {
+//     agent { dockerfile true }
+//     }
+//     environment {
+//         CI = 'true'
+//     }
+//     stages {
+//         stage('Install dependencies') {
+//             steps {
+//                sh "npm install"
+//             }
+//         }
+//     }
+// }
