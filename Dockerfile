@@ -4,9 +4,6 @@ RUN apt-get update
 ENV BASE_APKS="sudo openssl openssh-client zip ttf-dejavu maven ruby" \
     BUILD_APKS=" make gcc clang g++ paxctl binutils-gold autoconf bison"
 
-RUN apt-get install -y $BASE_APKS $BUILD_APKS \
-      && rm -rf /var/lib/apt/lists/*
-
 ENV NODE_PREFIX=/usr/local \
     NODE_VERSION=6.4.0 \
     NPM_VERSION=latest \
