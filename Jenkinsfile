@@ -2,11 +2,7 @@
 pipeline {
     agent {
         docker {
-            image 'node:14-alpine'
-            args '-p 3000:3000'
-        }
-        docker {
-            image 'ruby:3.0.2'
+            image 'starefossen/ruby-node:latest'
             args '-p 3000:3000'
         }
     }
@@ -16,7 +12,6 @@ pipeline {
     stages {
         stage('Install dependencies') {
             steps {
-                sh 'gem install cocoapods'
                 sh 'npm install'
             }
         }
