@@ -1,12 +1,14 @@
-version: '3.4'
+version: '3'
 
 services:
-  example:
-    image: example
-    build:
-      context: .
-      dockerfile: ./Dockerfile
-    environment:
-      NODE_ENV: production
+  nodejs:
+    build: nodejs
+    volumes:
+      - ./nodejs:/usr/src/app
     ports:
-      - 8080:8080
+      - "5001:3000"
+  ruby:
+    build: ruby
+    image: dydx/ruby-micro
+    ports:
+      - "5002:3000"
