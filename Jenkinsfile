@@ -13,6 +13,7 @@ pipeline {
         stage('Install dependencies') {
             steps {
                 sh 'ruby -v'
+                sh 'node -v'
             }
         }
     }
