@@ -12,6 +12,7 @@ pipeline {
     stages {
         stage('Install dependencies') {
             steps {
+                sh 'rvm install ruby@latest'
                 sh '/bin/bash -c \\"$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)\\"'
             }
         }
