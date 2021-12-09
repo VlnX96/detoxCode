@@ -12,9 +12,7 @@ pipeline {
     stages {
         stage('Install dependencies') {
             steps {
-                sh 'curl -sSL https://raw.githubusercontent.com/rvm/rvm/master/binscripts/rvm-installer | bash -s stable'
-                sh 'rvm install ruby@latest'
-                sh '/bin/bash -c \\"$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)\\"'
+                sh '/bin/bash -c \\"$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)\\"'
             }
         }
     }
